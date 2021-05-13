@@ -1,0 +1,42 @@
+.cards-display {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+
+
+.card{
+    max-width: 320px;
+    height: 520px;
+    cursor: pointer;
+}
+
+.card-body{
+    overflow: hidden;
+    
+}
+.search {
+    
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+    background-color: #313131;
+    color:#fff;
+    border-radius: 7px;
+    padding: 2rem;
+
+
+}
+.search-input{
+    width: 500px;
+}

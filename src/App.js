@@ -1,25 +1,78 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './header/header'
+import Login from './login/login'
+import { AuthContext, AuthProvider } from './context/authContext';
+import { useContext, useState } from 'react';
+import Cards from './card/cards'
+import {
+  BrowserRouter ,
+  
+  Route,
+ 
+} from "react-router-dom";
+import Details from './details';
+import Profile from './profile/profile';
 
 function App() {
+  const authContext=useContext(AuthContext);
+  
+  const [user, setUser]=useState({
+    email:'mongi@ohif.com',
+    nom:'mongi berrima'
+
+  })
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<BrowserRouter>
+<Header/>
+
+      <div className='container'>
+
+        <Route exact path="/profile">
+           <div className="container">
+    
+        <Profile/>
+      
     </div>
+          </Route>
+     
+    <Route exact path="/details/:id">
+           <div className="container">
+    
+       { authContext.auth.email? <Details/> : null}
+      
+    </div>
+          </Route>
+     
+     
+          <Route exact path="/">
+           <div className="container">
+    
+    { authContext.auth.email? <Cards/> : <Login/>}
+      
+    </div>
+          </Route>
+         
+          
+        
+      </div>
+    </BrowserRouter>
+
+
+
+    
   );
 }
 
-export default App;
+function AppWithStore(){
+  return(
+     <AuthProvider>
+    <App/>
+  </AuthProvider>
+  )
+ 
+}
+
+export default AppWithStore;
