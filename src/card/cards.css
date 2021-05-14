@@ -1,5 +1,10 @@
+.items{
+    min-height: 100vh;
+}
+
 .cards-display {
     margin-top: 100px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +15,7 @@
 .pagination {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+   padding: 2rem;
 }
 
 

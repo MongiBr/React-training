@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Header from './header/header'
 import Login from './login/login'
@@ -7,29 +7,26 @@ import { useContext, useState } from 'react';
 import Cards from './card/cards'
 import {
   BrowserRouter ,
-  
+  Switch,
   Route,
  
 } from "react-router-dom";
 import Details from './details';
 import Profile from './profile/profile';
+import Footer from './footer/footer';
 
 function App() {
   const authContext=useContext(AuthContext);
-  
-  const [user, setUser]=useState({
-    email:'mongi@ohif.com',
-    nom:'mongi berrima'
-
-  })
-  
-
+ 
   return (
+    <div>
+      
 <BrowserRouter>
-<Header/>
 
-      <div className='container'>
+<Header brand='React Training'/>
 
+     
+    <Switch>
         <Route exact path="/profile">
            <div className="container">
     
@@ -54,12 +51,18 @@ function App() {
       
     </div>
           </Route>
-         
           
+         <Route>
+           <div className='not-found'>
+             <h1>404 PAGE NOT FOUND</h1>
+           </div>
+         </Route>
+         </Switch>  
         
-      </div>
+    
     </BrowserRouter>
-
+<Footer/>
+    </div>
 
 
     

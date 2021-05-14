@@ -1,47 +1,35 @@
 import React, {useContext, useState} from 'react'
 import { AuthContext } from '../context/authContext';
 import './login.css'
-
+import data from '../Data/data'
  
 
 function Login() {
     const authContext=useContext(AuthContext);
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
+     const [error, setError]=useState('');
 
-function loginUser(credentials) {
- return fetch('https://serverdicom.herokuapp.com/users/login', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify(credentials)
-   
- })
-   .then(data => data.json()
-   )
-  
-}
 
 
     function login(e){
         e.preventDefault();
         console.log({email,password})
 
-       const token = loginUser({
-      email,
-      password
-        });
-        
-        if (token){
+      
+        data.map(user=> {
+          if (email==user.email && password==user.password){
             
-            localStorage.setItem('token', token);
+            localStorage.setItem('token', password);
             localStorage.setItem('email',email);
-            authContext.setAuth({token,email})
+            authContext.setAuth({password,email})
 
-        }else{
-            alert('wrong delatils!');
+        }else
+        {
+          setError('Wrong details')
         }
+      })
+        
     }
   return (
     <div className='login'>
@@ -54,7 +42,12 @@ function loginUser(credentials) {
                     <label className="form-label  " value={password}>Password</label>
                     <input type="password" className="form-control align" id="exampleInputPassword1" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
-                
+                {
+                  error!=''?
+                  <div class="alert alert-danger" role="alert">
+  {error}
+</div> : null
+                }
                 <button type="submit" className="btn btn-primary align" onClick={login}>Submit</button>
     </form>
     </div>

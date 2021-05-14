@@ -1,13 +1,12 @@
-.login{
-    height: 700px;
-    
+.login {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-   
 }
 
-.align{
+.align {
     width: 400px;
     margin: 0 0 30px 0;
 }

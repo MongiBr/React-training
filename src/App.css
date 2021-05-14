@@ -1,11 +1,27 @@
 .btn-primary {
-  background-color: rgb(6, 141, 96);
+  background-color: #047751;
   border: none;
   border-radius: 30px;
 }
 
 .btn-primary:hover {
-  background-color: rgb(4, 119, 81);
+  background-color: #047751;
+}
+
+body {
+  background-color: #fcfcfc;
+
+ 
+}
+
+.container{
+  height: 100% !important;
+}
+
+.form-control:focus {
+  border-color: #047751;
+  box-shadow: 4px #047751;
+  outline: 0 none;
 }
 
 .navbar {
@@ -22,6 +38,13 @@
   font-weight: bold;
 }
 
+.not-found {
+  display: flex;
+  height: 700px;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
   color: #111;
   text-decoration: none;
@@ -31,6 +54,6 @@ a:hover {
   color: rgb(4, 119, 81);
 }
 
-.btn-danger{
+.btn-danger {
   border-radius: 25px;
 }

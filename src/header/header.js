@@ -1,13 +1,17 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/authContext';
 import {NavLink, Link } from 'react-router-dom'
+import { useHistory } from 'react-router'
 
-function Header() {
+function Header(props) {
     const authContext=useContext(AuthContext);
+    let history =useHistory();
     function logout(){
+    
         authContext.setAuth({})
         localStorage.removeItem('token');
-        localStorage.removeItem('email')
+        localStorage.removeItem('email');
+        history.push('/')
     }
 
    
@@ -16,7 +20,7 @@ function Header() {
         <nav className="navbar fixed-top ">
             <div className="container-fluid  mt-2">
                 
-                <span className="navbar-brand mb-0 h1">Learn React</span>
+                <span className="navbar-brand mb-0 h1">{props.brand}</span>
                
                { authContext.auth.email? (
                    <div> 
