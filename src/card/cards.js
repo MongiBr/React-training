@@ -30,6 +30,8 @@ export default function Cards(){
             fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(data => setCard(data));
+
+          
            
     },[])
 
@@ -37,7 +39,9 @@ export default function Cards(){
     
 
     const [limit , setLimit]=useState(6);
-    const items = card.slice(0, limit) 
+    const items = card.slice(0,limit ) ;
+    
+
     console.log(search)
     return (
         <div className='items'>
@@ -46,11 +50,13 @@ export default function Cards(){
             <input type='search' className='form-control search-input'  value={search} onChange={e=> setSearch(e.target.value)} />
        </div>
         <div className='cards-display'>
-      
-        {loading?
-        items.map((c, index) =>(
-            
-           c.title.includes(search)?
+        {}
+        {search!=''?
+        loading? 
+        
+        card.map((c, index) =>(
+           
+            c.title.includes(search)?
                 <div onClick={e=>handleChange(e,c.id)}>
                 <Card
                 
@@ -58,10 +64,20 @@ export default function Cards(){
                 body={c.body}
                 
                 /> </div>: null
-        )): <h1>Loading ...</h1>}
+        )): <h1>Loading ...</h1>:  items.map((c, index) =>(
+           
+           
+                <div onClick={e=>handleChange(e,c.id)}>
+                <Card
+                
+                title={c.title}
+                body={c.body}
+                
+                /> </div>
+        ))}
      
           </div>
-          {!( card.length==items.length) ?
+          {!( card.length==limit) ?
           <div className='pagination'>
              <button className='btn btn-primary btn-lg' onClick={e=>setLimit(limit+6)}>See more</button>
              </div>: null
