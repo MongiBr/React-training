@@ -1,4 +1,4 @@
-#Trining
+#Training
 This is what i did in training as a ReactJs trainer
 
 # Getting Started with Create React App
